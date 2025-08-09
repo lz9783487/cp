@@ -1,0 +1,444 @@
+{
+	"lbi": {
+		"prefix": "lbi",
+		"body": [
+			"int(lower_bound($a.begin(), $a.end(), $0) - $a.begin())",
+		]
+	},
+	"lb": {
+		"prefix": "lb",
+		"body": [
+			"lower_bound($a.begin(), $a.end(), $0)",
+		]
+	},
+	"ubi": {
+		"prefix": "ubi",
+		"body": [
+			"int(upper_bound($a.begin(), $a.end(), $0) - $a.begin())",
+		]
+	},
+	"ub": {
+		"prefix": "ub",
+		"body": [
+			"lower_bound($a.begin(), $a.end(), $0)",
+		]
+	},
+	"cn": {
+		"prefix": "cn",
+		"body": [
+			"cin >> ",
+		]
+	},
+	"cnv": {
+		"prefix": "cnv",
+		"body": [
+			"for (int i = 0; i < (int) $v.size(); ++i) {",
+			"    cin >> $v[i];",
+			"}",
+		]
+	},
+	"co": {
+		"prefix": "co",
+		"body": [
+			"cout << ",
+		]
+	},
+	"col": {
+		"prefix": "col",
+		"body": [
+			"cout << $0 << '\\n';",
+		]
+	},
+	"cov": {
+		"prefix": "cov",
+		"body": [
+			"for (int i = 0; i < int($v.size()); ++i) {",
+			"    cout << $v[i] << \" \\n\"[i == int($v.size()) - 1];",
+			"}",
+		]
+	},	
+	"coyesno": {
+		"prefix": "coyes",
+		"body": [
+			"cout << \"yes\" << '\\n';",
+		]
+	},
+	"lam" : {
+		"prefix": "lam",
+		"body": [
+			"auto $0 = [&]() -> void {",
+			"};",
+		]
+	},
+	"el": {
+		"prefix": "el", "body": ["'\\n'", ]
+	},
+	"db": {
+		"prefix": "db", "body": ["double", ]
+	},
+	"ld": {
+		"prefix": "ld", "body": [ "long double", ]
+	},
+	"ll": {
+		"prefix": "ll", "body": ["int64_t", ]
+	},
+	"ull": {
+		"prefix": "ull", "body": ["uint64_t", ]
+	},
+	"i128": {
+		"prefix": "i128", "body": ["__int128", ]
+	},
+	"fa": {
+		"prefix": "fa",
+		"body": [
+			"for (auto &$0 : ) {",
+			"}",
+		]
+	},
+	"fai": {
+		"prefix": "fai",
+		"body": [
+			"for (auto &i : ) {",
+			"}",
+		]
+	},
+	"faj": {
+		"prefix": "faj",
+		"body": [
+			"for (auto &j : ) {",
+			"}",
+		]
+	},
+	"fak": {
+		"prefix": "fak",
+		"body": [
+			"for (auto &k : ) {",
+			"}",
+		]
+	},
+	"fat": {
+		"prefix": "fat",
+		"body": [
+			"for (auto &[$0] : ) {",
+			"}",
+		]
+	},
+	"fk": {
+		"prefix": "fk",
+		"body": [
+			"for (int $1 = 0; $1 < $0; ++$1) {",
+			"}",
+		]
+	},
+	"fkv": {
+		"prefix": "fkv",
+		"body": [
+			"for (int i = 0; i < int($0.size()); ++i) {",
+			"}",
+		]
+	},
+	"fki": {
+		"prefix": "fki",
+		"body": [
+			"for (int i = 0; i < $0; ++i) {",
+			"}",
+		]
+	},
+	"fkj": {
+		"prefix": "fkj",
+		"body": [
+			"for (int j = 0; j < $0; ++j) {",
+			"}",
+		]
+	},
+	"fkk": {
+		"prefix": "fkk",
+		"body": [
+			"for (int k = 0; k < $0; ++k) {",
+			"}",
+		]
+	},
+	"fb": {
+		"prefix": "fb",
+		"body": [
+			"for (int $1 = 1; $1 <= $0; ++$1) {",
+			"}",
+		]
+	},
+	"fbi": {
+		"prefix": "fbi",
+		"body": [
+			"for (int i = 1; i <= $0; ++i) {",
+			"}",
+		]
+	},
+	"fbj": {
+		"prefix": "fbj",
+		"body": [
+			"for (int j = 1; j <= $0; ++j) {",
+			"}",
+		]
+	},
+	"fbk": {
+		"prefix": "fbk",
+		"body": [
+			"for (int k = 1; k <= $0; ++k) {",
+			"}",
+		]
+	},
+	"fni": {
+		"prefix": "fni",
+		"body": [
+			"for (int i = n - 1; i >= 0; --i) {",
+			"}",
+		]
+	},
+	"fnj": {
+		"prefix": "fnj",
+		"body": [
+			"for (int j = n - 1; j >= 0; --j) {",
+			"}",
+		]
+	},
+	"fnk": {
+		"prefix": "fnk",
+		"body": [
+			"for (int k = n - 1; k >= 0; --k) {",
+			"}",
+		]
+	},
+	"mii": {
+		"prefix": "mii",
+		"body": [
+			"map<int, int>",
+		]
+	},
+	"mll": {
+		"prefix": "mll",
+		"body": [
+			"map<int64_t, int64_t>",
+		]
+	},
+	"V": {
+		"prefix": "V",
+		"body": [
+			"vector<$0>",
+		]
+	},
+	"VV": {
+		"prefix": "VV",
+		"body": [
+			"vector<vector<$0>>",
+		]
+	},
+	"VVV": {
+		"prefix": "VVV",
+		"body": [
+			"vector<vector<vector<$0>>>",
+		]
+	},
+	"VVVV": {
+		"prefix": "VVVV",
+		"body": [
+			"vector<vector<vector<vector<$0>>>>",
+		]
+	},
+	"vi": {
+		"prefix": "vi",
+		"body": [
+			"vector<int>",
+		]
+	},
+	"vl": {
+		"prefix": "vl",
+		"body": [
+			"vector<int64_t>",
+		]
+	},
+	"vpii": {
+		"prefix": "vpii",
+		"body": [
+			"vector<pair<int, int>>",
+		]
+	},
+	"vpll": {
+		"prefix": "vpll",
+		"body": [
+			"vector<pair<int64_t, int64_t>>",
+		]
+	},
+	"vvi": {
+		"prefix": "vvi",
+		"body": [
+			"vector<vector<int>>$0",
+		]
+	},
+	"vvl": {
+		"prefix": "vvl",
+		"body": [
+			"vector<vector<int64_t>>$0",
+		]
+	},
+	"vvv": {
+		"prefix": "vvv",
+		"body": [
+			"vector<vector<vector<$0>>>",
+		]
+	},
+	"vvvi": {
+		"prefix": "vvvi",
+		"body": [
+			"vector<vector<vector<int>>>$0",
+		]
+	},
+	"vvvl": {
+		"prefix": "vvvl",
+		"body": [
+			"vector<vector<vector<int64_t>>>$0",
+		]
+	},
+	"pii": {
+		"prefix": "pii",
+		"body": [
+			"pair<int, int>",
+		]
+	},
+	"pll": {
+		"prefix": "pll",
+		"body": [
+			"pair<int64_t, int64_t>",
+		]
+	},
+	"spii": {
+		"prefix": "pii",
+		"body": [
+			"set<pair<int, int>>",
+		]
+	},
+	"spll": {
+		"prefix": "pll",
+		"body": [
+			"set<pair<int64_t, int64_t>>",
+		]
+	},
+	"so": {
+		"prefix": "so",
+		"body": [
+			"sort($1.begin(), $1.end());$0",
+		]
+	},
+	"rso": {
+		"prefix": "so",
+		"body": [
+			"sort($1.rbegin(), $1.rend());$0",
+		]
+	},
+	"sol": {
+		"prefix": "sol",
+		"body": [
+			"sort($1.begin(), $1.end(), [&](auto& g, auto& h) {$0",
+			"});",
+		]
+	},
+	"pb": {
+		"prefix": "pb",
+		"body": [
+			"push_back($0)",
+		]
+	},
+	"sr": {
+		"prefix": "sr",
+		"body": [
+			"string",
+		]
+	},
+	"sz": {
+		"prefix": "sz",
+		"body": [
+			"int($v.size())$0",
+		]
+	},
+	"all": {
+		"prefix": "all",
+		"body": [
+			"$v.begin(), $v.end()$0",
+		]
+	},
+	"rall": {
+		"prefix": "rall",
+		"body": [
+			"$v.rbegin(), $v.rend()$0",
+		]
+	},
+	"bg": {
+		"prefix": "bg",
+		"body": [
+			"$v.begin()$0",
+		],
+		"description": ".begin()"
+	},
+	"ed": {
+		"prefix": "ed",
+		"body": [
+			"$v.end()$0",
+		],
+		"description": ".end()"
+	},
+	"rv": {
+		"prefix": "rv",
+		"body": [
+			"reverse($v.begin(), $v.end())$0",
+		],
+	},
+	"uni": {
+		"prefix": "uni",
+		"body": [
+			"sort($v.begin(), $v.end()), $v.erase(unique($v.begin(), $v.end()), $v.end());$0"
+		]
+	},
+	"nummin": {
+		"prefix": "nummin",
+		"body": [
+			"*min_element($V.begin(), $V.end())$0"
+		]
+	},
+	"nummax": {
+		"prefix": "nummax",
+		"body": [
+			"*max_element($V.begin(), $V.end())$0"
+		]
+	},
+	"numpsum": {
+		"prefix": "numpsum",
+		"body": [
+			"auto $prefixsum = $0;",
+			"for (auto i = 1; i < int($prefixsum.size()); ++i) {",
+			"    $prefixsum[i] += $prefixsum[i - 1];",
+			"}",
+			"auto query = [&](int l, int r) { // [l, r)",
+			"    auto sma = (l > 0) ? $prefixsum[l - 1] : 0;",
+			"    return 0ll + $prefixsum[r - 1] - sma;",
+			"};",
+		]
+	},
+	"numsum": {
+		"prefix": "numsum",
+		"body": [
+			"accumulate($X.begin(), $X.end(), 0);$0"
+		]
+	},
+	"ckmn": {
+		"prefix": "ckmn",
+		"body": [
+			"template<typename A, typename B>",
+			"bool ckmn(A &x, const B &y) { return x > y && (x = y, true); }"
+		]
+	},
+	"ckmx": {
+		"prefix": "ckmx",
+		"body": [
+			"template<typename A, typename B>",
+			"bool ckmx(A &x, const B &y) { return x < y && (x = y, true); }"
+		]
+	},
+}
