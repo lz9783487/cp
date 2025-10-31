@@ -1,8 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+template <typename T>
+struct Inf;
+template <>
+struct Inf<int> {
+    const static int value = 1e9;
+};
+template <>
+struct Inf<int64_t> {
+    const static int64_t value = 1e18;
+};
 template <typename T>
 struct zkw {
-    static const T inf = 1e9, inf2 = 2e9;
-    // static const T inf = 1e18, inf2 = 2e18;
-    struct Node { 
+    static const T inf = Inf<T>::value;
+    struct Node {
         T sm, lz, mn, mx;
         Node() {
             sm = lz = 0, mn = inf, mx = -inf;
@@ -11,15 +22,16 @@ struct zkw {
             sm = _sm, lz = _lz, mn = _mn, mx = _mx;
         }
     };
+    int m{};
     vector<Node> a;
-    int m;
     // 线段树最后一层的下标范围是[m, 2m - 1]
     // 将x的[0, n - 1]映射到[m + 1, m + n], 其中m + n < 2m - 1
     void init(vector<T> x) {
-        int n = x.size() + 2;
-        for (m = 4; m < n; m <<= 1);
+        const int n = static_cast<int>(x.size()) + 2;
+        for (m = 4; m < n; m <<= 1) {
+        }
         a.resize(m << 1);
-        for (int i = 0; i < (int) x.size(); i++) {
+        for (int i = 0; i < static_cast<int>(x.size()); i++) {
             a[m + i + 1] = Node(x[i], 0, x[i], x[i]);
         }
         for (int i = m - 1; i >= 1; i--) {
@@ -30,7 +42,8 @@ struct zkw {
             a[i] = Node(sm, lz, mn, mx);
         }
     }
-    void update(int l, int r, T delta) { // [l, r] += delta
+    void update(int l, int r, T delta) {
+        // [l, r] += delta
         int len = 1, cntl = 0, cntr = 0;
         // 最后一层的开区间(l, r) += delta
         for (l += m + 1 - 1, r += m + 1 + 1; l ^ r ^ 1; l >>= 1, r >>= 1, len <<= 1) {
@@ -68,7 +81,7 @@ struct zkw {
     }
     // [l, r]的和, 最小值, 最大值, 注意, 可能返回inf +- 小范围的数
     tuple<T, T, T> query(int l, int r) {
-        T sm = 0, lmn = inf2, lmx = -inf2, rmn = inf2, rmx = -inf2;
+        T sm = 0, lmn = inf, lmx = -inf, rmn = inf, rmx = -inf;
         int len = 1, cntl = 0, cntr = 0;
         for (l += m + 1 - 1, r += m + 1 + 1; l ^ r ^ 1; l >>= 1, r >>= 1, len <<= 1) {
             sm += a[l].lz * cntl;
@@ -98,49 +111,66 @@ struct zkw {
             rmn += a[r].lz;
             rmx += a[r].lz;
         }
-        T mn = max(-inf, min(lmn, rmn));
-        T mx = min(inf, max(lmx, rmx));
-        return make_tuple(sm, mn, mx);
+        // 注意可能返回inf += delta, delta来自普通update操作（非错误）
+        return make_tuple(sm, min(lmn, rmn), max(lmx, rmx));
     }
 };
+static_assert(zkw<int>::inf == 1e9);
+static_assert(zkw<long long>::inf == 1e18);
+template <typename Tp>
 void test() {
-    zkw<int> tree;
+    auto rd = random_device();
+    mt19937_64 gener(rd());
+    uniform_int_distribution<int> dist(0, INT32_MAX);
+    auto Rand = [&]() -> int {
+        return dist(gener);
+    };
+    zkw<Tp> tree;
     int n = 10000;
-    using T = int;
-    vector<T> x(n+1, 0);
-    vector<T> brute(n+1, 0);
+    vector<Tp> x(n + 1, 0);
+    vector<Tp> brute(n + 1, 0);
     for (int i = 1; i <= n; i++) {
-        x[i] = rand() % 2000 - 1000;
+        x[i] = Rand() % 2000 - 1000;
         brute[i] = x[i];
     }
     tree.init(x);
     for (int i = 0; i < 10000; i++) {
-        int op = rand() % 4; // 生成一个0到3之间的随机数，决定执行何种操作
-        int l = rand() % n + 1;
-        int r = rand() % (n - l + 1) + l;
-        if (op == 0) { // 区间修改操作
-            T delta = rand() % 2000 - 1000;
+        int op = Rand() % 4; // 生成一个0到3之间的随机数，决定执行何种操作
+        int l = Rand() % n + 1;
+        int r = Rand() % (n - l + 1) + l;
+        if (op == 0) {
+            // 区间修改操作
+            Tp delta = Rand() % 2000 - 1000;
             tree.update(l, r, delta);
             for (int j = l; j <= r; j++)
                 brute[j] += delta;
-        } else if (op == 1) { // 区间查询和操作
+        } else if (op == 1) {
+            // 区间查询和操作
             auto res = tree.query(l, r);
-            T sum = get<0>(res);
-            T bruteSum = 0;
+            Tp sum = get<0>(res);
+            Tp bruteSum = 0;
             for (int j = l; j <= r; j++)
                 bruteSum += brute[j];
             assert(sum == bruteSum);
-        } else if (op == 2) { // 区间查询最大值操作
+        } else if (op == 2) {
+            // 区间查询最大值操作
             auto res = tree.query(l, r);
-            T mx = get<2>(res);
-            T bruteMax = *max_element(brute.begin() + l, brute.begin() + r + 1);
+            Tp mx = get<2>(res);
+            Tp bruteMax = *max_element(brute.begin() + l, brute.begin() + r + 1);
             assert(mx == bruteMax);
-        } else { // 区间查询最小值操作
+        } else {
+            // 区间查询最小值操作
             auto res = tree.query(l, r);
-            T mn = get<1>(res);
-            T bruteMin = *min_element(brute.begin() + l, brute.begin() + r + 1);
+            Tp mn = get<1>(res);
+            Tp bruteMin = *min_element(brute.begin() + l, brute.begin() + r + 1);
             assert(mn == bruteMin);
         }
     }
     cout << "passed!\n";
+}
+int main() {
+    int u = 10;
+    while (u--) test<int>();
+    u = 10;
+    while (u--) test<int64_t>();
 }
