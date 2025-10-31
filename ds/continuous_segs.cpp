@@ -1,7 +1,8 @@
 template <typename T = int, typename seg_type = pair<T, T>>
 struct Segs { // 维护连续区间
-    static const T inf = (int) 1e9 + 5;
+    // static const T inf = (int) 1e9 + 5;
     // static const T inf = (T) 1e18 + 5;
+    static const T inf = std::numeric_limits<T>::max() / 2 - 100;
     static bool is_intersect(T l1, T r1, T l2, T r2) { // 相交
         return !(l2 > r1 or r2 < l1);
     }
