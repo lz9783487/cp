@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 #ifndef ONLINE_JUDGE
-#    include <other/debug.h>
+    #include <other/debug.h>
 #else
-#    define debug(...) 0
+    #define debug(...) 0
 #endif
 using namespace std;
 template <typename A, typename B>
@@ -235,7 +235,6 @@ using vvvl = VVV<ll>;
 #define fors(t, s) for (auto t = (s); t >= 0; t = (t == 0 ? -1 : (t - 1) & (s)))  // for_subset
 // clang-format on
 void solve() {
-    
 }
 int main() {
     ios::sync_with_stdio(false);
